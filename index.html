@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sinan's 3rd Birthday Invitation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(to bottom right, #a7e9af, #dff9fb);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .invite-card {
+        background: #fff;
+        border-radius: 25px;
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        position: relative;
+        animation: slideFadeIn 1.2s ease-out forwards;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      @keyframes slideFadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #27ae60;
+        margin-bottom: 10px;
+      }
+
+      .photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #27ae60;
+        margin-bottom: 15px;
+        animation: bounce 1.5s ease;
+      }
+
+      @keyframes bounce {
+        0% {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        50% {
+          transform: translateY(10px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .football-icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+        animation: spin 3s linear infinite;
+        display: inline-block;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .details {
+        margin: 10px 0;
+        font-size: 1.1em;
+        color: #333;
+      }
+
+      .info {
+        background: #f0f0f0;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 15px;
+      }
+
+      .info p {
+        margin: 8px 0;
+      }
+
+      .rsvp {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .download-btn {
+        margin-top: 20px;
+        background: #27ae60;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .download-btn:hover {
+        background: #219150;
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 500px) {
+        .invite-card {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.6em;
+        }
+
+        .details {
+          font-size: 1em;
+        }
+
+        .download-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Invitation Card -->
+    <div class="invite-card" id="inviteCard">
+      <div class="football-icon">⚽</div>
+      <img src="images/Untitled design.png" alt="Sinan" class="photo" />
+      <h1>You're Invited!</h1>
+      <div class="details">
+        Join us to celebrate<br />
+        <strong>Sinan's 3rd Birthday!</strong>
+      </div>
+
+      <div class="info">
+        <p><strong>📅 Date:</strong> Saturday, July 12</p>
+        <p><strong>🕒 Time:</strong> 18:00 PM</p>
+        <p><strong>📍 Place:</strong> Happy Kids Offenbach Home</p>
+      </div>
+     <div class="rsvp">
+     It will be a pleasure to have you with us! 🎉
+    </div>
+    
+
+    <!-- Download Button -->
+    <button class="download-btn" onclick="downloadCard()">
+      ⬇️ Download Card
+    </button>
+
+    <!-- html2canvas Library -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+      function downloadCard() {
+        const card = document.getElementById("inviteCard");
+        html2canvas(card).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "Sinan_Birthday_Invite.png";
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>
